@@ -51,7 +51,7 @@ export class DetallePersonajeComponent implements OnInit {
         series: personajeMarvelService.series.items
       };
     }).catch((err) => {
-      this.mostrarToast(this.UBICACION_TOASTR, 'danger', 'Error Buscar Detalle Personaje', err, 5);
+      this.mostrarToast(this.UBICACION_TOASTR, 'danger', 'Error Buscar Detalle Personaje', err.message, 5);
     });
   }
 
@@ -71,7 +71,7 @@ export class DetallePersonajeComponent implements OnInit {
         this.listaComics.push(comic);
       });
     }).catch((err) => {
-      this.mostrarToast(this.UBICACION_TOASTR, 'danger', 'Error Buscar Comics Del Personaje', err, 5);
+      this.mostrarToast(this.UBICACION_TOASTR, 'danger', 'Error Buscar Comics Del Personaje', err.message, 5);
     });
   }
 
