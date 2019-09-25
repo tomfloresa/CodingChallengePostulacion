@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "Noctis Obscuro",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.sideBar.location": "left",
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.editor.tabSizing": "shrink"
+}

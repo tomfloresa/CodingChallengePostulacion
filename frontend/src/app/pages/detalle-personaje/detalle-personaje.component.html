@@ -1,0 +1,95 @@
+<nb-layout>
+    <nb-layout-header>
+        <button nbButton ghost class="mr-auto" status="danger" [routerLink]="['/']">
+            <nb-icon icon="arrow-back-outline"></nb-icon>
+        </button>
+    </nb-layout-header>
+
+    <nb-layout-column>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{{this.personaje.detailUrl}}" nbButton fullWidth hero status="primary">
+                        <nb-icon icon="star"></nb-icon>Detalle
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="{{this.personaje.comicLinkUrl}}" nbButton fullWidth hero status="warning">
+                        <nb-icon icon="star"></nb-icon>Comic Link
+                    </a>
+                </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col-md-4 col-sm-12">
+                    <div class="justify-content-center">
+                        <div class="card text-center" style="max-width: 37rem;">
+                            <img src="{{ this.personaje.img }}" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ this.personaje.name }}</h5>
+                                <p class="card-text">
+                                    {{ this.personaje.description || 'Sin Descripcion' }}
+                                </p>
+
+                                <p class="card-text">
+                                    <small class="text-muted">Ultima Modificaciรณn:
+                                        {{ this.personaje.modified }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <nb-card size="small" accent="info">
+                        <nb-card-header>Lista De Comics</nb-card-header>
+                        <nb-list>
+                            <nb-list-item *ngFor="let comic of this.listaComics">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ comic.image }}" class="rounded-circle" style="width: 75px" />
+                                    <p class="pl-3 text-justify">{{comic.title}} {{comic.id}}</p>
+                                    <button nbButton ghost class="ml-auto"
+                                        (click)="modalInfoComic(dialogComic, comic.id)" status="danger">
+                                        <nb-icon icon="star"></nb-icon>
+                                    </button>
+                                </div>
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-card>
+                    <nb-card size="small" accent="danger">
+                        <nb-card-header>Lista De Series</nb-card-header>
+                        <nb-list>
+                            <nb-list-item *ngFor="let serie of this.personaje.series">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ this.personaje.img }}" class="rounded-circle" style="width: 75px" />
+                                    <p class="pl-3 text-justify">{{serie.name}}</p>
+                                </div>
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-card>
+                </div>
+            </div>
+        </div>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed> </nb-layout-footer>
+</nb-layout>
+
+<ng-template #dialogComic let-data let-ref="dialogRef">
+    <div class="card m-3 text-center" style="max-width: 20rem;">
+        <img src="{{infoComic.image}}" class="card-img-top" />
+        <div class="card-body">
+            <h5 class="card-title">{{ infoComic.title }}</h5>
+            <p class="card-text">
+                <small class="text-muted">Paginas: {{ infoComic.pageCount }}</small>
+            </p>
+
+            <p class="card-text">
+                <small class="text-muted">Ultima Modificación: {{ infoComic.modified }}</small>
+            </p>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+            <h5 class="card-text">
+                <small class="text-muted">Precio: {{ infoComic.price }}</small>
+            </h5>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,18 @@
+version: '2.1'
+
+# Definicion de los servicios que van a correr
+services:
+  # Servidor Express
+  server: 
+    build: ./backend 
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT_SERVER=3000
+  # Cliente Angular
+  client:
+    build: ./frontend
+    ports:
+      - "4200:4200"
+  

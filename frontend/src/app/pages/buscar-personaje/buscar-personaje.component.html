@@ -1,0 +1,36 @@
+<nb-layout>
+  <nb-layout-header>
+    <nb-search type="rotate-layout" placeholder="Buscar" hint="Introduce el nombre de tu personaje"></nb-search>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div style="text-align:center">
+      <button nbButton hero status="success" (click)="abrirBuscador()">
+        <nb-icon icon="search"></nb-icon>Iniciar Busqueda
+      </button>
+    </div>
+
+    <div *ngIf="mostrarPersonajes" class="d-flex flex-wrap justify-content-center">
+      <div *ngFor="let personaje of this.personajes" class="card m-3 text-center" [@fadeIn] style="max-width: 20rem;">
+        <img src="{{ personaje.thumbnail.path }}.{{personaje.thumbnail.extension}}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ personaje.name }}</h5>
+          <p class="card-text">
+            {{ personaje.description || 'Sin Descripcion' }}
+          </p>
+
+          <p class="card-text">
+            <small class="text-muted">Ultima Modificación: {{ personaje.modified }}</small>
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+          <button nbButton status="info" outline [routerLink]="['/detalle', personaje.id]">
+            <nb-icon icon="arrow-ios-forward-outline"></nb-icon>Mas Informacion
+          </button>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed> </nb-layout-footer>
+</nb-layout>
