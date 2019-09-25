@@ -19,6 +19,12 @@ docker-compose -f docker-compose.yml build
 docker-compose -f docker-compose.yml up
 ```
 
+Acceso a la aplicacion
+```
+Frontend: localhost:4200
+Backend: localhost:3000
+```
+
 ## Autor ✒️
 
 * **Sergio Andrés Orellana Roa** - **Edhine** - *Ingeniero De Desarrollo* - [Linkedin](https://www.linkedin.com/in/sergio-andres-orellana-roa/) - [Github](https://github.com/Edhine)
